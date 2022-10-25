@@ -1,9 +1,13 @@
 # MoeCTF_2022
 MoeCTF 2022 Challenges and Writeups
 
+## 题解提交方式
+
 请选手们fork本仓库之后在WriteUps文件夹下新建一个文件夹，以自己的队伍名或者用户名命名，然后将writeup置于文件夹内，并对本仓库发起一次Pull Request。
 
 欢迎所有参赛的小伙伴贡献自己的WriteUp与解题心得！
+
+## 比赛相关信息
 
 **比赛时间**: 2022.08.20 ~ 2020.10.25;
 
