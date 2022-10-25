@@ -1,0 +1,1 @@
+这是一道非常简单的签到题，借助IDA可以很快capture the flag~
