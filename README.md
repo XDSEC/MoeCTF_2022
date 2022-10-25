@@ -5,9 +5,9 @@ MoeCTF 2022 Challenges and Writeups
 
 欢迎所有参赛的小伙伴贡献自己的WriteUp与解题心得！
 
-**比赛时间**: 2020.08.10 ~ 2020.09.21;
+**比赛时间**: 2022.08.20 ~ 2020.10.25;
 
-**预计比赛规模**: 300人左右;
+**比赛规模**: 1400人左右;
 
 **平台**: Cyber Terminal by XDSEC Cat Cat Developers;
 
