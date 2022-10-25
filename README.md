@@ -15,8 +15,6 @@ MoeCTF 2022 Challenges and Writeups
 
 **平台**: Cyber Terminal by XDSEC Cat Cat Developers;
 
-**题目数量**: 74题, 有线上环境的题目由各出题人自己解决. 附件大小大于3MB的题目不向平台上传;
-
 **其他信息**:
 
    - 由于比赛面向准大一学生, 比赛过程中会有选手陆续参加比赛;
