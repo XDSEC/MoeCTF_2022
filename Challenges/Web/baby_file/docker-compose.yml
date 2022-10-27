@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    restart: on-failure
+    environment:
+      - FLAG=flag{dynamic_flag}
+    ports:
+      - "8888:80"

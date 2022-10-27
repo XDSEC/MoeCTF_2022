@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+p,
+h1,
+h3 {
+    text-align: center;
+    color: white;
+}
+
+.about {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 10px;
+    font-style: oblique;
+    color: yellow;
+}
+
+.hr-top {
+    width: 40%;
+    border-bottom: 2px soild #fff;
+    margin: 5px auto;
+}
+
+.hr-foot {
+    width: 90%;
+    margin: 8px auto;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-image: url(../images/index-bg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
