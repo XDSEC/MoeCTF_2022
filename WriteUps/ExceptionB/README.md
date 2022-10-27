@@ -2,11 +2,11 @@
 
 ## 写在前面
 
-~~大家好，我是练习时长两个月半的个人练习生鲤唐可可~~
+~~大家好，我是练习时长两个月半的个人练习生[鲤唐可可](https://github.com/ExceptionB)~~
 
 不过有一说一，我还真的是在moectf开赛后才开始学的，虽然进群还挺早的，但是开赛前都在快乐摸鱼（
 
-<span style="font-size:64px">我好菜啊呜呜呜</span>
+***<span style="font-size:64px">我好菜啊呜呜呜</span>***
 
 我在比赛前是**真的没有**这方面的基础，所以在接下来的WriteUps里面，你将看到包括但不限于以下现象：
 
@@ -27,23 +27,24 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 - ***to be continue***
 - [Little_FSR](./Crypto/Little_FSR/) ~~找不到附件了，在等出题人~~
 - [不止一次](./Crypto/bzyc/)
+- [signin](./Crypto/signin/)
   
 ### [Misc](./Misc/)
 
-- to be continue
+- ***to be continue***
 
 ### [Reverse](./Reverse/)
 
-- to be continue
+- ***to be continue***
 - [D_flat](./Reverse/D_flat/)
 
 ### [Pwn](./Pwn/)
 
-- to be continue
+- ***to be continue***
 
 ### [Web](./Web/)
 
-- to be continue
+- ***to be continue***
   
 ## 写在最后
 
