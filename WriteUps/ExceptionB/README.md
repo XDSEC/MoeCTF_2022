@@ -32,6 +32,8 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 ### [Misc](./Misc/)
 
 - ***to be continue***
+- [肥肠简单的取证](./Misc/Forensic_1/)
+- [好像有一点难的取证](./Misc/Forensic_2/)
 
 ### [Reverse](./Reverse/)
 
