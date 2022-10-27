@@ -28,6 +28,7 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 - [Little_FSR](./Crypto/Little_FSR/) ~~找不到附件了，在等出题人~~
 - [不止一次](./Crypto/bzyc/)
 - [signin](./Crypto/signin/)
+- [凯撒变异](./Crypto/Caesar2/)
   
 ### [Misc](./Misc/)
 
@@ -57,3 +58,7 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 最后跟我一起：
 
 ~~<span style="font-size:36px">dbt学姐!!!</span>~~
+
+## 关于题解的版权
+
+除特殊声明外，所有题解对**非盈利**使用无需告知，只需贴出本README的链接即可，对**盈利或有潜在的盈利可能性**的使用不进行授权
