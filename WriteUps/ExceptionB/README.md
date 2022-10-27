@@ -28,19 +28,24 @@
 
 emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽然很多做不明白，简单的做个目录
 
+*注意：文件命名不一定与题目名称对应，具体请见目录*
+
 ### [Crypto](./Crypto/)
 
 - ***to be continue***
-- [Little_FSR](./Crypto/Little_FSR/) ~~找不到附件了，在等出题人~~
+<!-- - [Little_FSR](./Crypto/Little_FSR/) ~~找不到附件了，在等出题人~~ -->
 - [不止一次](./Crypto/bzyc/)
 - [signin](./Crypto/signin/)
 - [凯撒变异](./Crypto/Caesar2/)
+<!-- - [](Crypto/Vigenere/) -->
+<!-- - [Weird_E_Revenge](./Crypto/Weird_E_Revenge/) -->
   
 ### [Misc](./Misc/)
 
 - ***to be continue***
 - [肥肠简单的取证](./Misc/Forensic_1/)
 - [好像有一点难的取证](./Misc/Forensic_2/)
+<!-- - [](Misc/hamming/) -->
 
 ### [Reverse](./Reverse/)
 
