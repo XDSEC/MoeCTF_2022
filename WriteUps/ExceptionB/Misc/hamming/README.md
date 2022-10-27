@@ -1,6 +1,4 @@
-# MoeCTF 2022 / 
-
-// TODO
+# MoeCTF 2022 / Hamming
 
 ## 初见
 

@@ -37,15 +37,19 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 - [不止一次](./Crypto/bzyc/)
 - [signin](./Crypto/signin/)
 - [凯撒变异](./Crypto/Caesar2/)
-<!-- - [](Crypto/Vigenere/) -->
-<!-- - [Weird_E_Revenge](./Crypto/Weird_E_Revenge/) -->
+- [维吉尼亚](Crypto/Vigenere/)
+- [Weird_E_Revenge](./Crypto/Weird_E_Revenge/)
+- [小小凯撒](./Crypto/Caesar/)
+- [ABCDEFG~](./Crypto/ABCDEFG/)
+- [ezHash](./Crypto/ez_hash/)
   
 ### [Misc](./Misc/)
 
 - ***to be continue***
 - [肥肠简单的取证](./Misc/Forensic_1/)
 - [好像有一点难的取证](./Misc/Forensic_2/)
-<!-- - [](Misc/hamming/) -->
+- [Hamming](./Misc/hamming/)
+- [Rabbit](./Misc/Rabbit/)
 
 ### [Reverse](./Reverse/)
 

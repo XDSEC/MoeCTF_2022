@@ -30,11 +30,12 @@
 
 在本题，即为`m^e = c1 (mod p*q)`和`m^e = c2 (mod r*q)`，满足CRT定理
 
-先编写CRT的python（我的写法与oi-wiki上有些不同，但结果是一致的）
+先编写CRT的python实现（我的写法与oi-wiki上有些不同，~~但结果是一致的~~，这里实现的是ExCRT拓展中国剩余定理）
 
 ```python
 from math import prod
 from itertools import combinations
+from Crypto.Util.number import inverse,GCD
 def CRT(args):
     A = [a for n,a in args] # 余数
     N = [n for n,a in args] # 模数
@@ -46,11 +47,13 @@ def CRT(args):
     return (sum([a*c % N_ for a,c in zip(A,C)]) % N_) // G_
 ```
 
-于是就可以求得 `t` 满足 `m^e = t (mod p*r) `
+利用CRT可以求得一个 `c` 满足 `m^e = c (mod p*q*r)`
+
+接着便可以利用CRT的结果，按照与signin类似的方法进行求解
 
 ```python
 t = CRT([(p*q,c1),(q*r,c2)])
 d = inverse(e,(p-1)*(r-1))
 m = pow(t,d,p*r)
 ```
-// TODO
+得到flag
