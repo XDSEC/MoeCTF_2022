@@ -25,7 +25,8 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 ### [Crypto](./Crypto/)
 
 - ***to be continue***
-- [Little_FSR](./Crypto/Little_FSR/)
+- [Little_FSR](./Crypto/Little_FSR/) ~~找不到附件了，在等出题人~~
+- [不止一次](./Crypto/bzyc/)
   
 ### [Misc](./Misc/)
 
@@ -34,6 +35,7 @@ emmmmmm，这次moectf还做了挺多题的，基本上除了pwn都做了，虽�
 ### [Reverse](./Reverse/)
 
 - to be continue
+- [D_flat](./Reverse/D_flat/)
 
 ### [Pwn](./Pwn/)
 
