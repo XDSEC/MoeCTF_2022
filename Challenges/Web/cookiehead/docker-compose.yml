@@ -1,0 +1,9 @@
+version: '3'
+services:
+  src:
+    build: ./
+    tty: true
+    environment:
+      - FLAG=moectf{fuckfuck}
+    ports:
+      - "1038:80"

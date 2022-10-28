@@ -1,0 +1,10 @@
+version: '3'
+services:
+  src:
+    build: ./src/
+    tty: true
+    environment:
+      - FLAG=moectf{fuckfuck}
+    ports:
+      - "1038:80"
+    restart: on-failure
