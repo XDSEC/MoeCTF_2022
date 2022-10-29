@@ -237,6 +237,79 @@ for i in range(len(enc)-1, 0, -1):
 print(bytes(enc))
 ```
 
+#### 题目源码
+
+``` c
+#include<stdio.h>
+#include<string.h>
+
+unsigned char check[] = { 0xcd,0x4d,0x8c,0x7d,0xad,0x1e,0xbe,0x4a,0x8a,0x7d,0xbc,0x7c,0xfc,0x2e,0x2a,0x79,0x9d,0x6a,0x1a,0xcc,0x3d,0x4a,0xf8,0x3c,0x79,0x69,0x39,0xd9,0xdd,0x9d,0xa9,0x69,0x4c,0x8c,0xdd,0x59,0xe9,0xd7,0 };
+
+//moectf{p4tch_pr0gr4m_t0_d3c0mpi1e_it!}
+void enc1(unsigned char* input)
+{
+    __asm {
+        jz label
+        jnz label
+        _emit 0xe9
+        label:
+    }
+    for (int i = 0; i < strlen((const char*)input) - 1; i++)
+        input[i] += input[i + 1];
+}
+
+void enc2(unsigned char* input)
+{
+    __asm {
+        jz label
+        jnz label
+        _emit 0xe9
+        label:
+    }
+
+    for (int i = 0; i < strlen((const char*)input); i++)
+        input[i] = ((input[i] >> 4) | (input[i] << 4)) & 0xff;
+}
+
+int my_strcmp(unsigned char* s1, unsigned char* s2)
+{
+    int i = 0, f = 0;
+
+    while (i < 38)
+        if (s1[i] == s2[i++])
+            f++;
+
+    if (f == 38)
+        return 1;
+    else
+        return 0;
+}
+
+int main()
+{
+    unsigned char input[100];
+    puts("I poisoned the program... Can you reverse it?!");
+    puts("Come on! Give me your flag:");
+    scanf_s("%s", input, 100);
+
+    if (strlen((const char*)input) != 38)
+    {
+        puts("\nQwQ, please try again.");
+        return 0;
+    }
+ 
+    enc1(input);
+    enc2(input);
+
+    if(my_strcmp(input,check))
+        puts("\nTTTTTTTTTTQQQQQQQQQQQQQLLLLLLLLL!!!!");
+    else
+        puts("\nQwQ, please try again.");
+
+    return 0;
+}
+```
+
 ### fake key
 
 考察动态调试。
@@ -330,6 +403,49 @@ for i in range(len(enc)):
     flag += chr((enc[i] - add2[i] + add1[i]) ^ key[i % len(key)])
 
 print(flag)
+```
+
+#### 题目源码
+
+``` c
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+unsigned char check[] = {21,33,15,25,37,91,25,57,95,58,59,48,116,7,67,63,9,90,52,12,116,63,30,45,39,33,18,22,31,0};
+unsigned char key[100] = {"yunzh1jun"};
+//moectf{D3bug_t0_g3t_7he_Key!}
+
+__attribute((constructor)) static void fun()
+{
+    strcat(key,"TCL,trackYYDS");
+}
+
+int main()
+{
+    int len = strlen(key);
+    unsigned char input[100];
+
+    puts("I changed the key secretly, you can't find the right key!");
+    puts("And I use random numbers to rot my input, you can never guess them!");
+    puts("Unless you debug to get the key and random numbers...");
+    puts("Now give me your flag:");
+
+    scanf("%s", input);
+    int len_ipt = strlen(input);
+
+    for(int i = 0; i < len_ipt; i++)
+    input[i] ^= key[i % len];
+
+    for(int i = 0; i < len_ipt; i++)
+    input[i] += rand() % 10;
+
+    if(!strcmp(input, check))
+    puts("\nRight! TTTTTQQQQQLLLLL!!!");
+    else
+    puts("QwQ, plz try again.");
+
+    return 0;
+}
 ```
 
 ### Art
@@ -512,6 +628,83 @@ for i in range(len(enc)):
   print(chr(enc[i] ^ box[key]), end='')
 ```
 
+#### 题目源码
+
+``` c
+#include <stdio.h>
+#include <string.h>
+#include <Windows.h>
+#include <exception>
+
+int key = 0x19;
+
+unsigned char box[] = { 172, 4, 88, 176, 69, 150, 159, 46, 65, 21, 24, 41, 177, 51, 170, 18, 13, 137, 230, 250, 243, 196, 189, 231, 112, 138, 148, 193, 133, 157, 163, 242, 63, 130, 142, 215, 3, 147, 61, 19, 5, 107, 65, 3, 150, 118, 227, 177, 138, 74, 34, 85, 196, 25, 245, 85, 166, 31, 14, 97, 39, 203, 31, 158, 90, 122, 227, 21, 64, 148, 71, 222, 0, 1, 145, 102, 183, 205, 34, 100, 245, 165, 156, 104, 165, 82, 134, 189, 176, 221, 118, 40, 171, 22, 149, 197, 38, 44, 246, 57, 190, 0, 165, 173, 227, 147, 158, 227, 5, 160, 176, 29, 176, 22, 11, 91, 51, 149, 164, 9, 22, 135, 86, 31, 131, 78, 74, 60, 85, 54, 111, 187, 76, 75, 157, 177, 174, 229, 142, 200, 251, 14, 41, 138, 187, 252, 32, 98, 4, 45, 128, 97, 214, 193, 204, 59, 137, 197, 139, 213, 38, 88, 214, 182, 160, 80, 117, 171, 23, 131, 127, 55, 43, 160, 29, 44, 207, 199, 224, 229, 73, 201, 250, 107, 192, 152, 102, 153, 146, 0, 2, 212, 117, 70, 34, 5, 53, 209, 75, 197, 173, 224, 142, 69, 59, 80, 21, 181, 46, 133, 48, 137, 84, 18, 222, 241, 90, 240, 43, 167, 27, 74, 38, 93, 152, 212, 161, 190, 209, 77, 126, 56, 222, 11, 10, 84, 184, 115, 109, 173, 140, 30, 217, 49, 95, 86, 126, 189, 72, 50, 152, 46, 62, 235, 162, 29};
+unsigned char check[] = { 30,112,122,110,234,131,158,239,150,226,178,213,153,187,187,120,185,61,110,56,66,194,134,255,99,189,250,121,163,109,96,148,179,66,17,195,144,137,189,239,212,151,248,123,139,11,45,117,126,221,203,0 };
+
+int FilterFunc(int dwExceptionCode)
+{
+    if (dwExceptionCode == EXCEPTION_INT_DIVIDE_BY_ZERO)
+        return EXCEPTION_EXECUTE_HANDLER;
+
+    return EXCEPTION_CONTINUE_SEARCH;
+}
+
+int my_strcmp(unsigned char* s1, unsigned char* s2)
+{
+    int i = 0, f = 0;
+
+    while (i < 51)
+        if (s1[i] == s2[i++])
+            f++;
+
+    if (f == 51)
+        return 1;
+    else
+        return 0;
+}
+
+int main()
+{
+    unsigned char input[100];
+    //unsigned char input[100] = {"moectf{Re4d_4ssemb1y_t0_g3t_the_m4gic_key_0f_Tr4ck}"};
+    int index = 0, tmp, i;
+
+    puts("Can you read my assembly in exception?");
+    puts("Give me your flag:");
+    scanf_s("%s", input, 100);
+
+    if (strlen((const char*)input) != 51)
+    {
+        puts("\nQwQ, please try again.");
+        return 0;
+    }
+
+    for (i = 0; i < 51; i++)
+    {
+
+        __try {
+            index = (0x7f * index + 0x66) % 0xff;
+            tmp = index >> 7;
+            tmp = 1 / tmp;
+        }
+        __except (FilterFunc(GetExceptionCode())) {
+            key = (97 * key + 101) % 233;
+            key ^= 0x29;
+            //printf("catch i = %d\n", i);
+        }
+
+        input[i] ^= box[key];
+
+    }
+
+    if (strcmp(check, input))
+        puts("\nTTTTTTTTTTQQQQQQQQQQQQQLLLLLLLLL!!!!");
+    else
+        puts("\nQwQ, please try again.");
+    return 0;
+}
+```
+
 ### broken hash
 
 考察SEH，patch程序，以及编写交互脚本。
@@ -521,7 +714,7 @@ for i in range(len(enc)):
 这个题被非预期的比较多，但还是说一下预期解。
 
 本题使用了一个哈希算法（SHA1，魔改了部分参数）对flag每一位计算哈希，然后跟密文对比验证。当然，只取了最终哈希值的前4个字节（防止直接用SHA1去查彩虹表）。
-预期解法是去patch程序输出，让程序能够输出check过的长度（即for循环中的i）。具体而言，这个循环是每次验证一位，不正确就退出循环，所以当我们的输入只有前3个字符正确的时候，i退出时应该是3；前4个字符正确的时候，i退出时应该是4。我们想办法让程序输出这个i，然后每一位去尝试每一个可见字符。i每自增一次，我们就知道当前这一位字符是正确的。当然了，这道题使用SEH隐藏了真正的输出，真正的输出字符附在密文的最后，进行了一个异或0xff的解密之后才输出。
+预期解法是去patch程序输出，让程序能够输出check过的长度（即for循环中的i）。具体而言，这个循环是每次验证一位，不正确就退出循环，所以当我们的输入只有前3个字符正确的时候，i退出时应该是3；前4个字符正确的时候，i退出时应该是4。我们想办法让程序输出这个i，然后每一位去尝试每一个可见字符。i每自增一次，我们就知道当前这一位字符是正确的。当然了，这道题使用异常处理隐藏了真正的输出，真正的输出字符附在密文的最后，进行了一个异或0xff的解密之后才输出。，且加了反调试，如果是在调试状态下，不会进入异常，会进入假的print。
 
 具体操作上，就是把
 
@@ -567,7 +760,7 @@ patch成
 
 然后edit -> patch program -> apply patches to input file，点OK保存文件，然后写一个脚本来爆破flag.
 
-当然了，因为哈希算法本质上还是一个映射，这个题即把每一个字符映射到一个4字节的值上，所以可以输入所有的可见字符，获取其对应的映射值，跟最终的密文对比，就可以获得相应的字符。（呜呜呜背大锅）
+当然了，因为哈希算法本质上还是一个映射，这个题即把每一个字符映射到一个4字节的值上，所以可以输入所有的可见字符，获取其对应的映射值，跟最终的密文对比，就可以获得相应的字符。（呜呜呜背大锅）非预期之后，前面加的异常处理以及反调试就没有任何用处了。
 
 #### 解题脚本
 
@@ -591,6 +784,155 @@ for i in range(7, 88):
             break
 flag += '}'
 print(flag)
+```
+
+#### 题目源码
+
+``` c
+#include <stdio.h>
+#include <string.h>
+#include <Windows.h>
+#include <exception>
+#include "sha1.h"
+
+int sha1_test(BYTE* input);
+int Filter_div0(int dwExceptionCode);
+void sha1(BYTE* input);
+void decode(unsigned int* string);
+void trigger_exception();
+void hook();
+
+#ifdef _WIN64
+#pragma comment(linker,"/INCLUDE:_tls_used")
+#else
+#pragma comment(linker,"/INCLUDE:__tls_used")
+#endif // _WIN64
+ 
+void NTAPI MY_TLS_CALLBACK(PVOID DllHandle, DWORD Reason, PVOID Reserved);
+//TLS
+void NTAPI MY_TLS_CALLBACK(PVOID DllHandle, DWORD Reason, PVOID Reserved)
+{
+	dbg = IsDebuggerPresent();
+}
+ 
+extern "C"
+#ifdef _WIN64
+#pragma const_seg(".CRT$XLX")
+const
+#else
+#pragma data_seg(".CRT$XLX")
+#endif
+PIMAGE_TLS_CALLBACK pTLS_CALLBACKs[] = { MY_TLS_CALLBACK,0 };
+#pragma data_seg()
+#pragma const_seg()
+
+
+unsigned int check[100];
+unsigned int enc[] = { 0x64744c9a,0x47c2ff1,0xa2d74292,0x85bef77e,0x711fcbf7,0x669e1609,0x6bbd9db6,0x6941c8a4,0xb16e48b3,0xde321186,0x5251e8c2,0xfb8f95a7,0x711fcbf7,0xcb5c3fad,0x36568af5,0xfb8f95a7,0x82acf96a,0x75dcd570,0x7ef00e40,0xfb8f95a7,0x4be9314a,0xcb5c3fad,0xa2d74292,0xde321186,0xfb8f95a7,0x46927fa8,0xb16e48b3,0xd7c1a410,0x567375c3,0x711fcbf7,0xfb8f95a7,0x9c19f0f3,0xd035e914,0xfb8f95a7,0x6941c8a4,0xb7d1395,0xd7c1a410,0xc87a7c7e,0xfb8f95a7,0xd7c1a410,0xde321186,0x5251e8c2,0xfb8f95a7,0xd5380c52,0xbea99d3b,0xcedb7952,0xfb8f95a7,0x73456320,0xd7c1a410,0xde321186,0xfb8f95a7,0x581d99e5,0xa2d74292,0x711fcbf7,0xfb8f95a7,0x6372812,0xfb8f95a7,0x73456320,0xcedb7952,0xef53e254,0xfb8f95a7,0x9f12424d,0x669e1609,0xfb8f95a7,0x9c19f0f3,0xfecf7685,0xb7d1395,0x1833e8b1,0xfb8f95a7,0x9f66dd04,0xa2d74292,0xd7c1a410,0xfb8f95a7,0x6941c8a4,0x866caf4f,0x47c2ff1,0x64744c9a,0xfb8f95a7,0xd5380c52,0xcedb7952,0xde321186,0x81453d43,0xcb5c3fad,0xb16e48b3,0xc578f843,0xcedb7952,0xde321186,0xe38c6f07,0x8b9e97a8,0x8fdf9edf,0xd1868b96,0x93afd1d1,0x8d8bdf85,0x989edf86,0xdf91969e,0xf5c3a0c1,0 };
+//moectf{F1nd_th3_SEH_7hen_B1a5t_My_Fla9_and_Y0u_Can_Get_A_Cup_Of_Milk_Tea_From_YunZh1Jun}
+char right[] = { "TTTTQQQQQQQLLLLL!!!!!\nThis is your flag!!!\nHave fun in moectf2022 and insist on learning reverse engineering!\n" };
+char wrong[] = { "What a pity...Plz try again >_<\n" };
+int pass = 1, dbg = 0;
+
+int main()
+{
+	void (*phook)();
+	phook = trigger_exception;
+
+	if (dbg)
+		phook = hook;
+
+	BYTE input[100];
+	char* result;
+
+	puts("This is a surprise!");
+	printf("Give me your flag: ");
+	scanf_s("%s", input, 100);
+
+	if (strlen((const char*)input) != 88)
+	{
+		puts("Wrong length!");
+		return 0;
+	}
+
+	sha1(input);
+
+	for (int i = 0; i < 88; i++)
+	{
+		pass = pass && (check[i] == enc[i]);
+		if (!pass)
+			break;
+	}
+
+	__try {
+		phook();
+	}
+	__except (Filter_div0(GetExceptionCode())) {
+		decode(enc + 88);
+		printf("%s", (char*)(enc + 88));
+		return 0;
+	}
+
+	if (pass)
+		result = right;
+	else
+		result = wrong;
+
+	printf("%s", result);
+
+	return 0;
+}
+
+void sha1(BYTE* input)
+{
+	pass = sha1_test(input);
+}
+
+int sha1_test(BYTE* input)
+{
+	BYTE tmp[2];
+	BYTE buf[SHA1_BLOCK_SIZE];
+	SHA1_CTX ctx;
+
+	for (int j = 0; j < 88; j++)
+	{
+		tmp[0] = input[j];
+
+		sha1_init(&ctx);
+		sha1_update(&ctx, tmp, 1);
+		sha1_final(&ctx, buf);
+
+		check[j] = (buf[3] << 24) | (buf[2] << 16) | (buf[1] << 8) | buf[0];
+
+		//printf("%#x,", check);
+	}
+	//printf("\n");
+	return pass;
+}
+
+void decode(unsigned int* string)
+{
+	for (int i = 0; i < 8; i++)
+		string[i] ^= 0xffffffff;
+}
+
+void trigger_exception()
+{
+	int i = 1 / pass;
+}
+
+void hook()
+{
+	int i = 1 + pass;
+}
+
+int Filter_div0(int dwExceptionCode)
+{
+	if (dwExceptionCode == EXCEPTION_INT_DIVIDE_BY_ZERO)
+		return EXCEPTION_EXECUTE_HANDLER;
+
+	return EXCEPTION_CONTINUE_SEARCH;
+}
 ```
 
 ## By wuliao
