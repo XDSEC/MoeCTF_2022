@@ -127,7 +127,7 @@ if s.check() == sat:
 
 对D_flat.dll查壳可以发现是用C#编写的：
 
-![](.\imgs\d_flat.png)
+![](./imgs/d_flat.png)
 
 对于C#逆向可以使用dnspy来反编译。
 
