@@ -1,0 +1,1 @@
+moectf{run_me_to_get_the_flag}
