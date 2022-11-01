@@ -1,5 +1,3 @@
-m = 'In cryptography, the one-time pad (OTP) is an encryption technique that cannot be cracked, but requires the use of a single-use pre-shared key that is not smaller than the message being sent. '
-
-key = flag = 'moectf{Ma2y_T1m3_9ad_8an_6e_crac7ed}'
+flag = 'moectf{Ma2y_T1m3_9ad_8an_6e_crac7ed}'
 
 

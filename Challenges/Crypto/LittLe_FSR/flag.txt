@@ -1,0 +1,1 @@
+flag = b'moectf{Bru!e_@r_so1^e_A_sy3teM_0f_eq&aT10n3?}'
