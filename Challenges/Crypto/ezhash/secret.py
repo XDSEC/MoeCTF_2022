@@ -1,0 +1,1 @@
+flag='moectf{w0w!U_f1nd_@_c0l1i$i0n!U_2_th3_m4ster_of_ARX!}'
